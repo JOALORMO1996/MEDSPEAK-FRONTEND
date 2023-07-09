@@ -1,0 +1,86 @@
+
+body {
+    background-color: #F6F6F6;
+  }
+  
+
+  .container {
+    background-color: #F6F6F6;
+    padding-top: 80px;
+    text-align: center;
+  }
+
+.titulo {
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+    color: #00C7E2;
+  
+}
+
+.custom-form {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid #BEBEBE;
+  padding: 60px;
+  border-radius: 4px;
+  background-color: #FFFFFF; /* Establece el fondo del formulario como blanco */
+}
+
+.custom-form .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.custom-label {
+  display: block;
+  text-align: left;
+  color: #7A7676;
+}
+
+
+.custom-input {
+  width: 95%;
+  padding: 8px;
+  border: 1px solid #9A9A9A;
+  border-radius: 4px;
+  display: flex;
+  
+}
+
+.custom-button {
+  width: 100%; /* Establece el ancho del botón al 100% */
+  background-color: #00C7E2;
+  color: #FFFFFF;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold; 
+}
+
+.image-container {
+  position: absolute;
+  top: 139px; /* Ajusta la distancia vertical de la imagen */
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.image-container img {
+  width: 100px; /* Ajusta el ancho deseado de la imagen */
+  height: auto; /* Ajusta la altura automáticamente según el ancho */
+}
+.forgot-password {
+  display: block;
+  text-align: left;
+  color: #939393;
+  margin-top: -17px;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  color: #00C7E2; /* Cambia el color en el efecto hover */
+}

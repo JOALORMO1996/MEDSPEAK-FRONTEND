@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    <h1 class="titulo" style="font-size: 30px;">MedSpeak</h1>
+    </div>
+      <div *ngIf="mensajeError" class="error-message">{{ mensajeError }}</div>
+
+    <div class="form-container">
+      
+  <form class="custom-form" (submit)="login()">
+    <div class="image-container">
+      <img src="../../../assets/images/logo.png" alt="Imagen de inicio de sesión">
+    </div>
+    <br>
+  <h2 class="titulo" style="font-size: 22px;">Iniciar sesión</h2>
+
+    <label for="correo" class="custom-label">CORREO ELECTRÓNICO</label>
+    <div class="form-group">
+    <input type="text" id="correo" name="correo" class="custom-input" required placeholder="Escribe tu correo" [(ngModel)]="correo">
+  </div>
+    <label for="contrasenia" class="custom-label">CONTRASEÑA</label>
+    <div class="form-group">
+    <input type="contrasenia" id="contrasenia" name="contrasenia" class="custom-input" required placeholder="Escribe tu contraseña" [(ngModel)]="contrasenia">
+  </div>
+  <a href="#" class="forgot-password" routerLink="/recuperarContrasenia">Olvidó su contraseña</a>
+  <br>
+  <button type="submit" class="custom-button">Iniciar sesión</button>
+</form>
+      </div>
+</body>
+</html>
+
