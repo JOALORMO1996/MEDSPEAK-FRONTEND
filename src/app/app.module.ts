@@ -7,6 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guards';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { NavComponent } from './components/nav/nav.component';
+import { FooterComponent } from './components/footer/footer.component'; 
 
 /**Material modules */
 import { MatToolbarModule } from '@angular/material/toolbar'; // Importa MatToolbarModule
@@ -21,7 +24,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecuperarContraseniaComponent } from './components/recuperar-contrasenia/recuperar-contrasenia.component';
-import { InicioComponent } from './components/inicio/inicio.component'; 
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -33,6 +36,9 @@ import { InicioComponent } from './components/inicio/inicio.component';
     LoginComponent,
     RecuperarContraseniaComponent,
     InicioComponent,
+    NavComponent,
+    FooterComponent,
+    
     
   ],
   imports: [
@@ -49,7 +55,8 @@ import { InicioComponent } from './components/inicio/inicio.component';
     MatCardModule,
     MatInputModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

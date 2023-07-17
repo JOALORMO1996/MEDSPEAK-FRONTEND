@@ -1,1 +1,68 @@
-<p>usuario works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <app-nav></app-nav>
+   <main>
+    <div class="table-container">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8  custom-table">
+          
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef class="header-cell"> ID. </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef class="header-cell"> NOMBRE </th>
+              <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="apellido">
+              <th mat-header-cell *matHeaderCellDef class="header-cell"> APELLIDO </th>
+              <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="telefono">
+              <th mat-header-cell *matHeaderCellDef class="header-cell"> TELEFONO </th>
+              <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="direccion">
+                <th mat-header-cell *matHeaderCellDef class="header-cell"> DIRECCIÓN </th>
+                <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="correo">
+                <th mat-header-cell *matHeaderCellDef class="header-cell"> CORREO </th>
+                <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="nombre_rol">
+                <th mat-header-cell *matHeaderCellDef class="header-cell"> ROL </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre_rol}} </td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef class="header-cell"> ACCIONES </th>
+                <td mat-cell *matCellDef="let element">  </td>
+              </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements">
+</mat-paginator>      
+</div>
+</main>
+</body>
+<br>
+<app-footer></app-footer>
+</html>

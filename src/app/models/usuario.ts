@@ -5,4 +5,5 @@ export class Usuario {
     telefono!: number;
     direccion!: string;
     correo!: string;
+    rol!: number;
 }

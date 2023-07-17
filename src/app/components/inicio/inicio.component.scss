@@ -1,0 +1,23 @@
+
+
+.image-container {
+  margin-top: -230px; /* Ajusta el valor del margen según tus necesidades */
+}
+body {
+  overflow-y: hidden;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px; /* Ajusta el margen superior según sea necesario */
+  font-weight: 500;
+}
+
+.banner h1 {
+  margin-bottom: 30px; /* Ajusta el margen inferior según sea necesario */
+  font-weight: 500;
+  
+}
+
