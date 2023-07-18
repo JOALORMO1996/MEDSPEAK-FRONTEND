@@ -25,6 +25,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecuperarContraseniaComponent } from './components/recuperar-contrasenia/recuperar-contrasenia.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 
 
@@ -37,10 +39,12 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RecuperarContraseniaComponent,
     InicioComponent,
     NavComponent,
-    FooterComponent,
+    FooterComponent
+   
     
     
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -56,7 +60,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FontAwesomeModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

@@ -1,7 +1,12 @@
 
-
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
 .image-container {
-  margin-top: -230px; /* Ajusta el valor del margen según tus necesidades */
+  margin-top: -160px; 
 }
 body {
   overflow-y: hidden;
@@ -11,12 +16,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px; /* Ajusta el margen superior según sea necesario */
+  margin-top: 40px; 
   font-weight: 500;
 }
 
 .banner h1 {
-  margin-bottom: 30px; /* Ajusta el margen inferior según sea necesario */
+  margin-bottom: 30px; 
   font-weight: 500;
   
 }

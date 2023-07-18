@@ -1,25 +1,2 @@
-table {
-    width: 100%;
-  }
-  main {
-    margin-top: 60px; /* Ajusta el valor del margen según el tamaño de tu nav */
-    max-height: calc(100vh - 200px); /* Ajusta el valor según tus necesidades */
-    overflow-y: auto; /* Añade scroll vertical si es necesario */
-    overflow-x: auto;
-  }
 
-  .table-container {
-    width: calc(100% - 40px);
-  overflow: hidden;
-  margin: 0 auto;
-  border: 1px solid #ccc; /* Agrega un borde de 1px con color gris (#ccc) */
-  
-  }
-
-  .header-cell {
-    background-color: #E6E6E6 !important;
-    border: 1px solid #ccc;
-    text-align: center;
-   
-  }
   
