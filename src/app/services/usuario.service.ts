@@ -1,11 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
+
+  usuarioActualizar = new Subject<Usuario[]>();
 
   private apiUrl = 'http://localhost:3000/usuario';
 
@@ -17,5 +20,11 @@ export class UsuarioService {
      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
      return this.http.get<any>(this.apiUrl, { headers });
+  }
+
+  crearUsuario(usuario: Usuario, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const url = `${this.apiUrl}/crearUsuario`;
+    return this.http.post(url, usuario, { headers });
   }
 }

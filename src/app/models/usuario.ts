@@ -1,9 +1,10 @@
 export class Usuario {
-    id!: number;
+    identificacion!: string;
     nombre!: string;
     apellido!: string;
     telefono!: number;
     direccion!: string;
     correo!: string;
-    rol!: number;
+    contrasenia!: string;
+    rol_id!: number;
 }

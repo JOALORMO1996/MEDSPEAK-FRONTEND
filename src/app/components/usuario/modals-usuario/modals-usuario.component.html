@@ -1,0 +1,55 @@
+<!-- modals-usuario.component.html -->
+<h2 class="titulo">Crear Usuario</h2>
+<mat-dialog-content fxLayout="row" fxLayoutGap="20px">
+  <form fxLayout="column" fxFlex="50">
+    <label for="identificacion" class="custom-label">Identificacion</label>
+    <div class="form-group">
+    <input type="number" id="identificacion" name="identificacion" class="custom-input" required placeholder="Digite el ID del usuario" [(ngModel)]="usuario.identificacion">
+  </div>
+  <label for="nombre" class="custom-label">Nombre</label>
+  <div class="form-group">
+  <input type="text" id="nombre" name="nombre" class="custom-input" required placeholder="Digite el nombre del usuario" [(ngModel)]="usuario.nombre">
+</div>
+
+<label for="apellido" class="custom-label">Apellido</label>
+<div class="form-group">
+<input type="text" id="apellido" name="apellido" class="custom-input" required placeholder="Digite el apellido del usuario" [(ngModel)]="usuario.apellido">
+</div>
+
+<label for="telefono" class="custom-label">Telefono</label>
+<div class="form-group">
+<input type="number" id="telefono" name="telefono" class="custom-input" required placeholder="Digite numero de telefono del usuario" [(ngModel)]="usuario.telefono">
+</div>
+  </form>
+
+  <form fxLayout="column" fxFlex="50">
+    <label for="direccion" class="custom-label">Direccion</label>
+    <div class="form-group">
+    <input type="text" id="direccion" name="direccion" class="custom-input" required placeholder="Digite la direccion del usuario" [(ngModel)]="usuario.direccion">
+    </div>
+
+    <label for="email" class="custom-label">Correo electrónico</label>
+    <div class="form-group">
+    <input type="text"  autocomplete="off" id="email" name="email" class="custom-input"  required placeholder="Digite el correo del usuario" [(ngModel)]="usuario.correo">
+    </div>
+
+    <label for="clave" class="custom-label">Contraseña</label>
+    <div class="form-group">
+    <input type="password"  autocomplete="off"  id="clave" name="clave" class="custom-input" required placeholder="Digite la contraseña del usuario" [(ngModel)]="usuario.contrasenia">
+    </div>
+
+    <label for="rol" class="custom-label">Rol</label>
+    <div class="form-group">
+    <select name="rol" id="rol" class="custom-select"  [(ngModel)]="usuario.rol_id">
+      <option disabled selected>Selecciona una opción</option>
+      <option *ngFor="let rol of roles" [value]="rol.id_rol">{{ rol.nombre_rol }}</option>
+    </select>
+    </div>
+  </form>
+</mat-dialog-content>
+<div class="botones-container">
+<mat-dialog-actions>
+  <button class="btn-primary" (click)="guardarUsuario()">Guardar</button>
+  <button class="btn-secundary"  (click)="onCancelClick()">Cancelar</button>
+</mat-dialog-actions>
+</div>

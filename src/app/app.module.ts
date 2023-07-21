@@ -26,6 +26,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RecuperarContraseniaComponent } from './components/recuperar-contrasenia/recuperar-contrasenia.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ModalsUsuarioComponent } from './components/usuario/modals-usuario/modals-usuario.component';
+import {MatSelectModule} from '@angular/material/select';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 
 
@@ -39,7 +43,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RecuperarContraseniaComponent,
     InicioComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    ModalsUsuarioComponent,
+  
    
     
     
@@ -61,7 +67,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     HttpClientModule,
     MatPaginatorModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatSelectModule,
+    FlexLayoutModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
