@@ -27,4 +27,10 @@ export class UsuarioService {
     const url = `${this.apiUrl}/crearUsuario`;
     return this.http.post(url, usuario, { headers });
   }
+
+  editarUsuario(usuario: Usuario, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const url = `${this.apiUrl}/editarUsuario/${usuario.id}`;
+    return this.http.put(url, usuario, { headers });
+  }
 }

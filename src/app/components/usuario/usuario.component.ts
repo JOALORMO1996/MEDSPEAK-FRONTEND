@@ -27,25 +27,42 @@ export class UsuarioComponent implements OnInit{
     this.dataSource = new MatTableDataSource<Usuario>([]);
   }
 
-  openModal(): void {
+  openModalUsuario() {
     const dialogRef = this.dialog.open(ModalsUsuarioComponent, {
-      width: '500px', 
-      data: {} 
+      width: '600px', 
+      data: {rol: [], usuario: new Usuario(), esEdicion: false}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Modal cerrado');
+      this.getUsuarios();
     });
   }
+
+  abrirModalEdicion(usuario: Usuario) {
+    const dialogRef = this.dialog.open(ModalsUsuarioComponent, {
+      width: '500px',
+      data: {  usuario,  esEdicion: true } 
+    
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('Modal cerrado');
+      this.getUsuarios(); 
+    });
+  }
+
   
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+   
     this.getUsuarios();
   }
 
   getUsuarios() {
     this.usuarioService.getUsuarios().subscribe(data => {
       this.dataSource.data = data;
+      this.dataSource.paginator = this.paginator; 
+      this.paginator.length = data.length;
     });
   }
 }
