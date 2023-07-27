@@ -16,6 +16,7 @@ import { SweetAlertService } from 'src/app/services/sweet-alert.service';
 })
 export class UsuarioComponent implements OnInit{
   displayedColumns: string[] = ['identificacion', 'nombre', 'apellido', 'telefono', 'direccion', 'correo', 'nombre_rol', 'estado', 'acciones'];
+  usuarios: Usuario[] = []; 
   dataSource = new MatTableDataSource<Usuario>();
   edit = faUserPen;
   delete = faTrashCan;
@@ -66,9 +67,12 @@ inactivoColor = '#FE1515';
 
   getUsuarios() {
     this.usuarioService.getUsuarios().subscribe(data => {
+      this.usuarios = data;
       this.dataSource.data = data;
       this.dataSource.paginator = this.paginator; 
-      this.paginator.length = data.length;
+      if (this.paginator) {
+        this.paginator.length = data.length;
+      }
     });
   }
 
@@ -108,5 +112,14 @@ inactivoColor = '#FE1515';
     }
   }
   
+  buscarUsuario(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    const filtro = filterValue.trim().toLowerCase();
+    this.dataSource.data = this.usuarios.filter(usuario =>
+      usuario.identificacion.toString().includes(filtro) ||
+      usuario.nombre.toLowerCase().includes(filtro) ||
+      usuario.apellido.toLowerCase().includes(filtro)
+    );
+  }
   
 }
