@@ -58,6 +58,11 @@
                 <td mat-cell *matCellDef="let element"> {{element.nombre_rol}} </td>
               </ng-container>
 
+              <ng-container matColumnDef="estado">
+                <th mat-header-cell *matHeaderCellDef class="header-cell"> ESTADO </th>
+                <td mat-cell *matCellDef="let usuario"> {{ obtenerEstadoUsuario(usuario.estado) }} </td>
+              </ng-container>
+
 
               <ng-container matColumnDef="acciones">
                 <th mat-header-cell *matHeaderCellDef class="header-cell"> ACCIONES </th>
@@ -65,8 +70,8 @@
                   <button mat-icon-button  (click)="abrirModalEdicion(usuario)">
                     <fa-icon [icon]="edit" style="color: #00C7E2;"></fa-icon>
                   </button>
-                  <button mat-icon-button>
-                    <fa-icon [icon]="delete" style="color: #FE1515;"></fa-icon>
+                  <button mat-icon-button (click)="cambiarEstadoUsuario(usuario, !esActivo(usuario))">
+                    <fa-icon [icon]="esActivo(usuario) ?  activeUser : disableUser" [style.color]="esActivo(usuario) ? activoColor : inactivoColor"></fa-icon>
                   </button> 
                 </td>
               </ng-container>

@@ -8,4 +8,5 @@ export class Usuario {
     correo!: string;
     contrasenia!: string;
     rol_id!: number;
+    estado!: boolean;
 }

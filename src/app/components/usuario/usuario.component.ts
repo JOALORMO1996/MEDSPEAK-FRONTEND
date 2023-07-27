@@ -3,9 +3,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import {  faUserPen, faTrashCan, faCirclePlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import {  faUserPen, faTrashCan, faCirclePlus, faMagnifyingGlass, faUserSlash, faUserCheck } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalsUsuarioComponent } from './modals-usuario/modals-usuario.component';
+import { SweetAlertService } from 'src/app/services/sweet-alert.service';
 
 
 @Component({
@@ -14,16 +15,21 @@ import { ModalsUsuarioComponent } from './modals-usuario/modals-usuario.componen
   styleUrls: ['./usuario.component.scss']
 })
 export class UsuarioComponent implements OnInit{
-  displayedColumns: string[] = ['identificacion', 'nombre', 'apellido', 'telefono', 'direccion', 'correo', 'nombre_rol', 'acciones'];
+  displayedColumns: string[] = ['identificacion', 'nombre', 'apellido', 'telefono', 'direccion', 'correo', 'nombre_rol', 'estado', 'acciones'];
   dataSource = new MatTableDataSource<Usuario>();
   edit = faUserPen;
   delete = faTrashCan;
   add = faCirclePlus;
   search = faMagnifyingGlass;
+  disableUser = faUserSlash;
+  activeUser = faUserCheck;
+
+activoColor = '#1FB101'; 
+inactivoColor = '#FE1515'; 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private usuarioService: UsuarioService, public dialog: MatDialog){
+  constructor(private usuarioService: UsuarioService, public dialog: MatDialog, private sweetAlertService: SweetAlertService){
     this.dataSource = new MatTableDataSource<Usuario>([]);
   }
 
@@ -65,4 +71,42 @@ export class UsuarioComponent implements OnInit{
       this.paginator.length = data.length;
     });
   }
+
+
+  obtenerEstadoUsuario(estado: boolean): string {
+    return estado ? 'Activo' : 'Inactivo';
+  }
+
+
+  esActivo(usuario: Usuario): boolean {
+    return usuario.estado === true;
+  }
+
+ 
+  cambiarEstadoUsuario(usuario: Usuario, activar: boolean) {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const accion = activar ? 'activar' : 'inactivar';
+      const mensajeConfirmacion = `¿Estás seguro de ${accion} este usuario?`;
+  
+      this.sweetAlertService.showConfirmation(mensajeConfirmacion, '').then((result) => {
+        if (result.isConfirmed) {
+          const servicio = activar ? this.usuarioService.activarUsuario : this.usuarioService.inactivarUsuario;
+          servicio.call(this.usuarioService, usuario, token).subscribe(
+            (response) => {
+              this.sweetAlertService.showCustomMessage('success', 'Éxito', response.mensaje);
+              this.getUsuarios();
+            },
+            (error) => {
+              this.sweetAlertService.showCustomMessage('error', 'Error', error.error.mensaje);
+            }
+          );
+        }
+      });
+    } else {
+      console.error('El token no está presente en el local storage.');
+    }
+  }
+  
+  
 }

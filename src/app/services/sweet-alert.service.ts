@@ -13,7 +13,7 @@ export class SweetAlertService {
       icon: 'success',
       title: 'Éxito',
       text: message,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#00C7E2',
       confirmButtonText: 'Cerrar',
     });
   }
@@ -23,7 +23,7 @@ export class SweetAlertService {
       icon: 'error',
       title: 'Error',
       text: message,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#00C7E2',
       confirmButtonText: 'Cerrar',
     });
   }
@@ -33,8 +33,21 @@ export class SweetAlertService {
       icon,
       title,
       text: message,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#00C7E2',
       confirmButtonText: 'Cerrar',
+    });
+  }
+
+  showConfirmation(title: string, text: string): Promise<any> {
+    return Swal.fire({
+      title,
+      text,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#00C7E2',
+      cancelButtonColor: '#BEBEBE',
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'Cancelar'
     });
   }
 
