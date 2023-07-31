@@ -1,0 +1,10 @@
+.botones-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre los botones */
+  }
+
+
+  button.btn-primary {
+    margin-right: 10px; /* Espacio entre el primer botón y el segundo */
+  }

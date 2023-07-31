@@ -10,6 +10,7 @@ import { AuthGuard } from './guards/auth.guards';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component'; 
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 /**Material modules */
 import { MatToolbarModule } from '@angular/material/toolbar'; // Importa MatToolbarModule
@@ -29,7 +30,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ModalsUsuarioComponent } from './components/usuario/modals-usuario/modals-usuario.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { PacienteComponent } from './components/paciente/paciente.component';
+import { ModalPacienteComponent } from './components/paciente/modal-paciente/modal-paciente.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DatePipe } from '@angular/common'; 
 
 
 
@@ -46,6 +50,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     NavComponent,
     FooterComponent,
     ModalsUsuarioComponent,
+    PacienteComponent,
+    ModalPacienteComponent,
   
    
     
@@ -70,9 +76,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatPaginatorModule,
     FontAwesomeModule,
     MatSelectModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, DatePipe],
   bootstrap: [AppComponent],
 
 })

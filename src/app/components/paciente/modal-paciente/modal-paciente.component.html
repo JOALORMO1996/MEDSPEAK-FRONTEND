@@ -1,0 +1,56 @@
+<h2 class="titulo">{{ esEdicion ? 'Editar Paciente' : 'Crear Paciente' }}</h2>
+<mat-dialog-content fxLayout="row" fxLayoutGap="20px">
+  <form fxLayout="column" fxFlex="50" #formUsuario1="ngForm">
+    <label for="identificacion" class="custom-label">Identificacion*</label>
+    <div class="form-group">
+    <input type="number" id="identificacion" name="identificacion" class="custom-input"  placeholder="Digite el ID del paciente" [(ngModel)]="paciente.identificacion" required #identificacion="ngModel">
+  <div class="alert-message" [hidden]="identificacion.valid || identificacion.pristine">La identificacion es obligatoria</div>
+  </div>
+  <label for="nombre" class="custom-label">Nombre*</label>
+  <div class="form-group">
+  <input type="text" id="nombre" name="nombre" class="custom-input"  placeholder="Digite el nombre del paciente" [(ngModel)]="paciente.nombre" required #nombre="ngModel">
+  <div class="alert-message" [hidden]="nombre.valid || nombre.pristine">El nombre es obligatorio</div>
+</div>
+
+<label for="apellido" class="custom-label">Apellido*</label>
+<div class="form-group">
+<input type="text" id="apellido" name="apellido" class="custom-input"  placeholder="Digite el apellido del paciente" [(ngModel)]="paciente.apellido" required #apellido="ngModel">
+<div class="alert-message" [hidden]="apellido.valid || apellido.pristine">El apellido es obligatorio</div>
+</div>
+
+<label for="fecha_nacimiento" class="custom-label">Fecha de nacimiento*</label>
+<div class="form-group">
+<input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="custom-input"   [(ngModel)]="data.paciente.fecha_nacimientoString" required #apellido="ngModel" >
+
+<div class="alert-message" [hidden]="apellido.valid || apellido.pristine">El apellido es obligatorio</div>
+</div>
+
+
+  </form>
+
+  <form fxLayout="column" fxFlex="50" #formUsuario2="ngForm">
+    <label for="telefono" class="custom-label">Telefono</label>
+    <div class="form-group">
+    <input type="number" id="telefono" name="telefono" class="custom-input"  placeholder="Digite numero de telefono del paciente" [(ngModel)]="paciente.telefono" >
+    </div>
+
+    <label for="direccion" class="custom-label">Direccion*</label>
+    <div class="form-group">
+    <input type="text" id="direccion" name="direccion" class="custom-input"  placeholder="Digite la direccion del paciente" [(ngModel)]="paciente.direccion" >
+    </div>
+
+    <label for="email" class="custom-label">Correo electrónico*</label>
+    <div class="form-group">
+    <input type="text"  autocomplete="off" id="email" name="email" class="custom-input"   placeholder="Digite el correo del paciente" [(ngModel)]="paciente.correo" required #correo="ngModel">
+    <div class="alert-message" [hidden]="correo.valid || correo.pristine">El correo es obligatorio</div>  
+  </div>
+
+    
+  </form>
+</mat-dialog-content>
+<div class="botones-container">
+<mat-dialog-actions>
+  <button class="btn-primary" [disabled]="formUsuario1.invalid || formUsuario2.invalid"  (click)="guardarPaciente()">{{ esEdicion ? 'Actualizar' : 'Guardar' }}</button>
+  <button class="btn-secundary"  (click)="onCancelClick()">Cancelar</button>
+</mat-dialog-actions>
+</div>

@@ -5,13 +5,15 @@ import { RecuperarContraseniaComponent } from './components/recuperar-contraseni
 import { InicioComponent } from './components/inicio/inicio.component';
 import { AuthGuard } from './guards/auth.guards';
 import { UsuarioComponent } from './components/usuario/usuario.component';
+import { PacienteComponent } from './components/paciente/paciente.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'recuperarContrasenia', component: RecuperarContraseniaComponent},
   {path: 'inicio', component: InicioComponent, canActivate: [AuthGuard] },
-  {path: 'usuarios', component: UsuarioComponent,  canActivate: [AuthGuard]}
+  {path: 'usuarios', component: UsuarioComponent,  canActivate: [AuthGuard]},
+  {path: 'pacientes', component: PacienteComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
