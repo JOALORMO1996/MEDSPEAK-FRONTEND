@@ -14,3 +14,12 @@ footer {
     color: #FFFFFF;
     text-align: center;
   }
+
+  //Responsive
+  @media (min-width: 768px) {
+    footer {
+      padding: 20px;
+    }
+  }
+
+

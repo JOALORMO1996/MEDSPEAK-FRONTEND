@@ -8,11 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
+  isMenuOpen: boolean = false;
 
   constructor(private router: Router, private loginService: LoginService) {}
   logout(): void {
     this.loginService.logout();
     this.router.navigate(['/login']);
   }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+  
 
 }

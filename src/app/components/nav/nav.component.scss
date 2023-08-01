@@ -38,8 +38,6 @@ nav {
   }
   
   .logout {
-    margin-left: auto;
-    margin-right: -10px;
     cursor: pointer;
   }
 
@@ -51,4 +49,63 @@ nav {
     color: #00C7E2;
     padding: 10px;
     transition: background-color 0.3s, color 0.3s;
+  }
+
+  .hamburger-menu {
+    display: none; /* Ocultar el menú hamburguesa por defecto */
+    cursor: pointer;
+  }
+  
+  .hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #FFFFFF;
+    margin: 6px 0;
+    transition: transform 0.3s; /* Agregamos la transición para suavizar el efecto */
+  }
+
+ 
+
+
+  ul.show {
+    visibility: visible; /* Mostrar el menú en pantallas pequeñas */
+    display: flex; /* Mostrar los elementos como flex para que se distribuyan adecuadamente */
+    flex-direction: column; /* Alinear los elementos del menú hamburguesa en columna */
+    background-color: #00C7E2;
+    position: absolute;
+    top: 60px; /* Ajustar la posición superior según tus necesidades */
+    right: 0;
+    width: 100%;
+  }
+
+  //Responsive
+
+  @media screen and (max-width: 768px) {
+    .hamburger-menu {
+      display: block; /* Mostrar el menú hamburguesa en pantallas pequeñas */
+    }
+    
+    ul {
+      display: none; /* Ocultar la lista de navegación */
+      flex-direction: column; /* Alinear los elementos del menú hamburguesa en columna */
+      background-color: #00C7E2;
+      position: absolute;
+      top: 60px; /* Ajustar la posición superior según tus necesidades */
+      right: 0;
+      width: 100%;
+    }
+    
+    li {
+      display: block;
+      margin: 10px 0;
+    }
+
+    ul li:hover a {
+      background-color: #FFFFFF;
+      color: #00C7E2;
+      padding: 10px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+ 
+  
   }

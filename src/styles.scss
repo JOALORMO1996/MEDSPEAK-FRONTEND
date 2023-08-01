@@ -19,6 +19,7 @@ table {
   overflow: hidden;
   margin: 0 auto;
   border: 1px solid #ccc; 
+  overflow-x: auto; 
   
   }
 
@@ -161,3 +162,32 @@ table {
 }
 
 
+//Responsive
+
+
+@media screen and (max-width: 768px) {
+  main {
+    max-width: 100%; /* Ancho máximo para pantallas pequeñas */
+    padding: 10px; /* Ajustar el espaciado para pantallas pequeñas */
+  }
+
+  table {
+    font-size: 12px; /* Ajustar el tamaño de fuente para pantallas pequeñas */
+  }
+  .header-cell {
+    padding: 5px; /* Ajustar el espaciado para pantallas pequeñas */
+  }
+
+  .search-container {
+    margin-right: 10px; /* Ajustar el espaciado para pantallas pequeñas */
+  }
+
+  .titulo {
+    font-size: 20px; /* Ajustar el tamaño de fuente para pantallas pequeñas */
+    margin-top: 10px; /* Ajustar el espaciado para pantallas pequeñas */
+  }
+
+  .search-field {
+    width: 160px; /* Ajustar el ancho máximo del campo de búsqueda para pantallas pequeñas */
+  }
+}

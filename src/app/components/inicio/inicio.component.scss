@@ -26,3 +26,22 @@ body {
   
 }
 
+
+//Responsive
+@media (max-width: 768px) {
+  .main-content {
+    height: auto;
+  }
+  
+  .image-container {
+    margin-top: 0;
+  }
+  
+  body {
+    overflow-y: auto;
+  }
+  
+  .banner {
+    margin-top: 20px;
+  }
+}
