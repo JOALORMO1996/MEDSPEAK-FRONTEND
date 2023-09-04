@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,7 +33,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { PacienteComponent } from './components/paciente/paciente.component';
 import { ModalPacienteComponent } from './components/paciente/modal-paciente/modal-paciente.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import { DatePipe } from '@angular/common'; 
+import { DatePipe } from '@angular/common';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { RestablecerContraseniaComponent } from './components/restablecer-contrasenia/restablecer-contrasenia.component'; 
 
 
 
@@ -52,6 +54,7 @@ import { DatePipe } from '@angular/common';
     ModalsUsuarioComponent,
     PacienteComponent,
     ModalPacienteComponent,
+    RestablecerContraseniaComponent,
   
    
     
@@ -78,7 +81,13 @@ import { DatePipe } from '@angular/common';
     MatSelectModule,
     FlexLayoutModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [AuthGuard, DatePipe],
   bootstrap: [AppComponent],

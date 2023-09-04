@@ -13,24 +13,26 @@
 
     <div class="form-container">
       
-  <form class="custom-form" (submit)="login()">
+  <form class="custom-form" (submit)="login()"  #formUsuario="ngForm">
     <div class="image-container">
       <img src="../../../assets/images/logo.png" alt="Imagen de inicio de sesión">
     </div>
     <br>
   <h2 class="titulo" style="font-size: 22px;">Iniciar sesión</h2>
 
-    <label for="correo" class="custom-label">CORREO ELECTRÓNICO</label>
+    <label for="correo" class="custom-label">CORREO ELECTRÓNICO*</label>
     <div class="form-group">
-    <input type="text" id="correo" name="correo" class="custom-input" required placeholder="Escribe tu correo" [(ngModel)]="correo">
+    <input type="text" id="correo" name="correo" class="custom-input" required placeholder="Escribe tu correo" [(ngModel)]="correo" required #correoInput="ngModel">
+    <div class="alert-message" [hidden]="correoInput.valid || correoInput.pristine">El correo es obligatorio</div>
   </div>
-    <label for="contrasenia" class="custom-label">CONTRASEÑA</label>
+    <label for="contrasenia" class="custom-label">CONTRASEÑA*</label>
     <div class="form-group">
-    <input type="password" id="contrasenia" name="contrasenia" class="custom-input" required placeholder="Escribe tu contraseña" [(ngModel)]="contrasenia">
+    <input type="password" id="contrasenia" name="contrasenia" class="custom-input" required placeholder="Escribe tu contraseña" [(ngModel)]="contrasenia" required #contraseniainput="ngModel">
+    <div class="alert-message" [hidden]="contraseniainput.valid || contraseniainput.pristine">La contrasenia es obligatoria</div>
   </div>
   <a href="#" class="forgot-password" routerLink="/recuperarContrasenia">Olvidó su contraseña</a>
   <br>
-  <button type="submit" class="custom-button">Iniciar sesión</button>
+  <button type="submit" class="custom-button" [disabled]="formUsuario.invalid" >Iniciar sesión</button>
 </form>
       </div>
 </body>

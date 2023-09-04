@@ -12,7 +12,7 @@
 
     <div class="form-container">
       
-  <form class="custom-form">
+  <form class="custom-form" (ngSubmit)="enviarSolicitud()">
     <div class="image-container">
       <img src="../../../assets/images/logo.png" alt="Imagen de inicio de sesión">
     </div>
@@ -21,11 +21,15 @@
 
     <label for="username" class="custom-label">CORREO ELECTRÓNICO</label>
     <div class="form-group">
-    <input type="text" id="username" class="custom-input" required placeholder="Escribe tu correo">
+      <input type="text" id="correo" name="correo" class="custom-input" required placeholder="Escribe tu correo" [(ngModel)]="correo" required #correoInput="ngModel">
+    <div class="alert-message" [hidden]="correoInput.valid || correoInput.pristine">El correo es obligatorio</div>
   </div>
   <a href="#" class="forgot-password" routerLink="/login">Iniciar sesión</a>
   <br>
-  <button type="submit" class="custom-button">Enviar</button>
+  <button type="submit" class="custom-button"  [disabled]="!correoInput.valid">Enviar</button>
+  <div *ngIf="resultadoMensaje" class="resultado-mensaje">
+    {{ resultadoMensaje }}
+  </div>
 </form>
       </div>
 </body>

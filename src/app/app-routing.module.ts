@@ -6,6 +6,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { AuthGuard } from './guards/auth.guards';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { PacienteComponent } from './components/paciente/paciente.component';
+import { RestablecerContraseniaComponent } from './components/restablecer-contrasenia/restablecer-contrasenia.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -13,7 +14,9 @@ const routes: Routes = [
   {path: 'recuperarContrasenia', component: RecuperarContraseniaComponent},
   {path: 'inicio', component: InicioComponent, canActivate: [AuthGuard] },
   {path: 'usuarios', component: UsuarioComponent,  canActivate: [AuthGuard]},
-  {path: 'pacientes', component: PacienteComponent, canActivate: [AuthGuard]}
+  {path: 'pacientes', component: PacienteComponent, canActivate: [AuthGuard]},
+  {path: 'restablecerContrasenia/:token', component: RestablecerContraseniaComponent}
+  
 ];
 
 @NgModule({

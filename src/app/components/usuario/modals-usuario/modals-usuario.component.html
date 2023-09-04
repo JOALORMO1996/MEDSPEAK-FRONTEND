@@ -33,11 +33,11 @@
 
     <label for="email" class="custom-label">Correo electrónico*</label>
     <div class="form-group">
-    <input type="text"  autocomplete="off" id="email" name="email" class="custom-input"   placeholder="Digite el correo del usuario" [(ngModel)]="usuario.correo" required #correo="ngModel">
+    <input type="email"  autocomplete="off" id="email" name="email" class="custom-input"   placeholder="Digite el correo del usuario" [(ngModel)]="usuario.correo" required #correo="ngModel">
     <div class="alert-message" [hidden]="correo.valid || correo.pristine">El correo es obligatorio</div>  
   </div>
 
-    <label for="clave" class="custom-label">Contraseña*</label>
+    <label for="clave" class="custom-label">Contraseña*</label> 
     <div class="form-group">
     <input type="password"  autocomplete="off"  id="clave" name="clave" class="custom-input"  placeholder="Digite la contraseña del usuario" [(ngModel)]="usuario.contrasenia" required #contrasenia="ngModel">
     <div class="alert-message" [hidden]="contrasenia.valid || contrasenia.pristine">La contraseña es obligatoria</div>  
