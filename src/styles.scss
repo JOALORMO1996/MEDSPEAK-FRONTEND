@@ -88,6 +88,8 @@ table {
   
 }
 
+
+
 .custom-input {
   width: 95%;
   padding: 8px;
@@ -161,7 +163,11 @@ table {
   margin-top: 1pt;
 }
 
-
+.acciones-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 //Responsive
 

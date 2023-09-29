@@ -20,24 +20,77 @@
 
 <label for="fecha_nacimiento" class="custom-label">Fecha de nacimiento*</label>
 <div class="form-group">
-<input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="custom-input"   [(ngModel)]="data.paciente.fecha_nacimientoString" required #apellido="ngModel" >
-
-<div class="alert-message" [hidden]="apellido.valid || apellido.pristine">El apellido es obligatorio</div>
+<input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="custom-input"   [(ngModel)]="data.paciente.fecha_nacimientoString" required #fecha_nacimiento="ngModel" >
 </div>
+<div class="alert-message" [hidden]="fecha_nacimiento.valid || fecha_nacimiento.pristine">La fecha de nacimiento es obligatoria</div>
+
+<label for="telefono" class="custom-label">Telefono</label>
+<div class="form-group">
+<input type="number" id="telefono" name="telefono" class="custom-input"  placeholder="Digite numero de telefono del paciente" [(ngModel)]="paciente.telefono" required #telefono="ngModel">
+<div class="alert-message" [hidden]="telefono.valid || telefono.pristine">El telefono es obligatorio</div>
+
+</div>
+
+
+<label for="departamento" class="custom-label">Departamento*</label>
+<div class="form-group">
+<select name="departamento" id="departamento" class="custom-select"  [(ngModel)]="paciente.departamento" (change)="cargarCiudadesPorDepartamento(paciente.departamento)" required #departamento="ngModel">
+  <option value="0">Selecciona una opción</option>
+  <option *ngFor="let departamento of departamentos" [value]="departamento.id_departamento">{{ departamento.nombre_departamento }}</option>
+</select>
+<div class="alert-message" [hidden]="departamento.valid || departamento.pristine">El departamento es obligatorio</div>
+</div>
+
+
+    <label for="ciudad" class="custom-label">Ciudad*</label>
+    <div class="form-group">
+      <select name="ciudad" id="ciudad" class="custom-select" [(ngModel)]="paciente.ciudad" required #ciudad="ngModel">
+        <option >Seleccione una ciudad</option>
+        <option *ngFor="let ciudad of ciudades" [value]="ciudad.id_ciudad">{{ ciudad.nombre_ciudad }}</option>
+      </select>
+    <div class="alert-message" [hidden]="ciudad.valid || ciudad.pristine">la ciudad es obligatoria</div>
+    </div>
+
 
 
   </form>
 
   <form fxLayout="column" fxFlex="50" #formUsuario2="ngForm">
-    <label for="telefono" class="custom-label">Telefono</label>
-    <div class="form-group">
-    <input type="number" id="telefono" name="telefono" class="custom-input"  placeholder="Digite numero de telefono del paciente" [(ngModel)]="paciente.telefono" >
-    </div>
+   
 
-    <label for="direccion" class="custom-label">Direccion*</label>
+    <label for="direccion" class="custom-label">Direccion</label>
     <div class="form-group">
     <input type="text" id="direccion" name="direccion" class="custom-input"  placeholder="Digite la direccion del paciente" [(ngModel)]="paciente.direccion" >
     </div>
+
+    <label for="estado_civil" class="custom-label">Estado civil</label>
+    <div class="form-group">
+      <select name="estado_civil" id="estado_civil" class="custom-select" [(ngModel)]="paciente.estado_civil">
+        <option >Seleccione el estado civil</option>
+        <option *ngFor="let estado_civil of estados_civiles" [value]="estado_civil.id_estado_civil">{{ estado_civil.nombre_estado_civil }}</option>
+      </select>
+    </div>
+
+    <label for="ocupacion" class="custom-label">Ocupacion</label>
+    <div class="form-group">
+    <input type="text" id="ocupacion" name="ocupacion" class="custom-input"  placeholder="Digite la ocuapcion del paciente" [(ngModel)]="paciente.ocupacion"  >
+    
+  </div>
+
+    <label for="asegurador" class="custom-label">Asegurador</label>
+    <div class="form-group">
+    <input type="text" id="asegurador" name="asegurador" class="custom-input"  placeholder="Digite la ocuapcion del paciente" [(ngModel)]="paciente.asegurador" required #asegurador="ngModel">
+    <div class="alert-message" [hidden]="asegurador.valid || asegurador.pristine">el campo asegurador es obligatorio</div>   
+  </div>
+
+
+    <label for="afiliacion" class="custom-label">Afiliacion</label>
+    <div class="form-group">
+    <input type="text" id="afiliacion" name="afiliacion" class="custom-input"  placeholder="Digite la ocuapcion del paciente" [(ngModel)]="paciente.afiliacion" required #afiliacion="ngModel">
+    <div class="alert-message" [hidden]="afiliacion.valid || afiliacion.pristine">la afiliacion es obligatoria</div>   
+  </div>
+
+
 
     <label for="email" class="custom-label">Correo electrónico*</label>
     <div class="form-group">

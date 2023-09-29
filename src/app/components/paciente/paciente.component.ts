@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Paciente } from 'src/app/models/paciente';
+import { faUserPen, faTrashCan, faCirclePlus, faMagnifyingGlass, faUserSlash, faUserCheck } from '@fortawesome/free-solid-svg-icons';
+import { MatPaginator } from '@angular/material/paginator';
 import { PacienteService } from 'src/app/services/paciente.service';
+import { MatDialog } from '@angular/material/dialog';
 import { SweetAlertService } from 'src/app/services/sweet-alert.service';
-import { faUserPen, faCirclePlus, faMagnifyingGlass, faUserSlash, faUserCheck } from '@fortawesome/free-solid-svg-icons';
 import { ModalPacienteComponent } from './modal-paciente/modal-paciente.component';
-import { DatePipe } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-paciente',
@@ -16,58 +16,61 @@ import { DatePipe } from '@angular/common';
 })
 export class PacienteComponent implements OnInit{
 
-displayedColumns: string[] = ['identificacion', 'nombre', 'apellido', 'fecha_nacimiento', 'telefono', 'direccion', 'correo', 'estado', 'acciones'];
-
-pacientes: Paciente[] = [];
-dataSource = new MatTableDataSource<Paciente>();
-
+  displayedColumns: string[] = ['identificacion', 'nombre', 'apellido', 'fecha_nacimiento', 'telefono', 'nombre_departamento', 'nombre_ciudad', 'direccion', 'nombre_estado_civil', 'ocupacion', 'asegurador', 'afiliacion', 'correo', 'estado', 'acciones'];
+  pacientes: Paciente[] = []; 
+  dataSource = new MatTableDataSource<Paciente>();
+ 
+  
+  //iconos
   edit = faUserPen;
+  delete = faTrashCan;
   add = faCirclePlus;
   search = faMagnifyingGlass;
   disableUser = faUserSlash;
   activeUser = faUserCheck;
 
-activoColor = '#1FB101'; 
+  activoColor = '#1FB101'; 
 inactivoColor = '#FE1515'; 
-
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-constructor(private pacienteService: PacienteService,
+constructor(
+   private pacienteService: PacienteService,
    public dialog: MatDialog,
-    private sweetAlertService: SweetAlertService,
-    private datePipe: DatePipe){
+   private datePipe: DatePipe,
+    private sweetAlertService: SweetAlertService){
   this.dataSource = new MatTableDataSource<Paciente>([]);
 }
 
-openModalPaciente() {
-  const dialogRef = this.dialog.open(ModalPacienteComponent, {
-    width: '600px', 
-    data: {rol: [], paciente: new Paciente(), esEdicion: false}
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('Modal cerrado');
-    this.getPacientes();
-  });
-}
-
-abrirModalEdicion(paciente: Paciente) {
-  const fechaFormateada = this.formatearFecha(paciente.fecha_nacimiento);
-  const dialogRef = this.dialog.open(ModalPacienteComponent, {
-    width: '500px',
-    data: {  paciente: { ...paciente, fecha_nacimientoString: fechaFormateada },  esEdicion: true } 
-  
-  });
-
-  dialogRef.afterClosed().subscribe(() => {
-    console.log('Modal cerrado');
-    this.getPacientes(); 
-  });
-}
 
   ngOnInit() {
-  this.getPacientes();
+    this.getPacientes();
+    
+
+  }
+
+  openModalPaciente() {
+    const dialogRef = this.dialog.open(ModalPacienteComponent, {
+      width: '600px', 
+      data: { paciente: new Paciente(), esEdicion: false}
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Modal cerrado');
+      this.getPacientes();
+    });
+  }
+  
+  abrirModalEdicion(paciente: Paciente) {
+    const fechaFormateada = this.formatearFecha(paciente.fecha_nacimiento);
+    const dialogRef = this.dialog.open(ModalPacienteComponent, {
+      width: '500px',
+      data: {  paciente: { ...paciente, fecha_nacimientoString: fechaFormateada },  esEdicion: true } 
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('Modal cerrado');
+      this.getPacientes(); 
+    });
   }
 
   getPacientes() {
@@ -106,7 +109,7 @@ abrirModalEdicion(paciente: Paciente) {
     const token = localStorage.getItem('token');
     if (token) {
       const accion = activar ? 'activar' : 'inactivar';
-      const mensajeConfirmacion = `¿Estás seguro de ${accion} este paciente?`;
+      const mensajeConfirmacion = `¿Estás seguro de ${accion} este usuario?`;
   
       this.sweetAlertService.showConfirmation(mensajeConfirmacion, '').then((result) => {
         if (result.isConfirmed) {
@@ -136,5 +139,7 @@ abrirModalEdicion(paciente: Paciente) {
       paciente.apellido.toLowerCase().includes(filtro)
     );
   }
+
+ 
 
 }

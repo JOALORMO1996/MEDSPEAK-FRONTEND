@@ -18,7 +18,6 @@ export class PacienteService {
 
   getPacientes(): Observable<any> {
     const token = localStorage.getItem('token');
-     // Agregar el token en el encabezado de la solicitud
      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
      return this.http.get<any>(this.apiUrl, { headers });
@@ -48,5 +47,14 @@ export class PacienteService {
     const url = `${this.apiUrl}/activarPaciente/${paciente.id}`;
     return this.http.put(url, paciente, { headers });
   }
+
+
+  getEstado_civil(): Observable<any> {
+    const token = localStorage.getItem('token');
+     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+     const url = `${this.apiUrl}/estado_civil`;
+     return this.http.get<any>(url, { headers });
+  }
+
 
 }

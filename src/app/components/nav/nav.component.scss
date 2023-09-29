@@ -29,7 +29,7 @@ nav {
   }
   
   .logo img {
-    width: 120px;
+    width: 90px;
     height: auto;
   }
   
@@ -44,6 +44,14 @@ nav {
     color: #ffffff;
     padding: 10px;
     transition: background-color 0.3s, color 0.3s;
+  }
+
+  .titulo2 {
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-top: -5px !important;
+  
   }
 
   .hamburger-menu {

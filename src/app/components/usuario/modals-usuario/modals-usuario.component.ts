@@ -3,8 +3,7 @@ import { Usuario } from 'src/app/models/usuario';
 import {MatDialogRef,  MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { RolService } from 'src/app/services/rol.service';
-import { Rol } from './../../../models/rol';
-import { NgForm } from '@angular/forms';
+import { Rol } from 'src/app/models/rol';
 import { SweetAlertService} from 'src/app/services/sweet-alert.service';
 
 @Component({
@@ -27,8 +26,12 @@ export class ModalsUsuarioComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.roles=this.data.rol
+    
+   
+    
     this.usuario = this.data.usuario;
+
+
     this.rolService.getRoles().subscribe(data=>{
       this.roles=data;
     })

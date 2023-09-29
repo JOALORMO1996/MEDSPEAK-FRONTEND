@@ -11,6 +11,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component'; 
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { PacienteComponent } from './components/paciente/paciente.component';
 
 /**Material modules */
 import { MatToolbarModule } from '@angular/material/toolbar'; // Importa MatToolbarModule
@@ -30,12 +31,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ModalsUsuarioComponent } from './components/usuario/modals-usuario/modals-usuario.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { PacienteComponent } from './components/paciente/paciente.component';
-import { ModalPacienteComponent } from './components/paciente/modal-paciente/modal-paciente.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DatePipe } from '@angular/common';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { RestablecerContraseniaComponent } from './components/restablecer-contrasenia/restablecer-contrasenia.component'; 
+import { RestablecerContraseniaComponent } from './components/restablecer-contrasenia/restablecer-contrasenia.component';
+import { ModalPacienteComponent } from './components/paciente/modal-paciente/modal-paciente.component'; 
 
 
 
@@ -52,9 +52,9 @@ import { RestablecerContraseniaComponent } from './components/restablecer-contra
     NavComponent,
     FooterComponent,
     ModalsUsuarioComponent,
-    PacienteComponent,
-    ModalPacienteComponent,
     RestablecerContraseniaComponent,
+    PacienteComponent,
+    ModalPacienteComponent
   
    
     

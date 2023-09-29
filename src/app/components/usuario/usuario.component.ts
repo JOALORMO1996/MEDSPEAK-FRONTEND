@@ -52,9 +52,8 @@ inactivoColor = '#FE1515';
     const dialogRef = this.dialog.open(ModalsUsuarioComponent, {
       width: '500px',
       data: {  usuario,  esEdicion: true } 
-    
     });
-
+    console.log('datos paciente ', usuario);
     dialogRef.afterClosed().subscribe(() => {
       console.log('Modal cerrado');
       this.getUsuarios(); 
